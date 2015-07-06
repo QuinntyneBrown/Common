@@ -138,15 +138,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Attributes\InternalAuthenticationAttribute.cs" />
     <Compile Include="Config\CommonConfiguration.cs" />
-    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Controllers\BaseEntityController.cs" />
+    <Compile Include="Data\BaseUow.cs" />
+    <Compile Include="Data\Contracts\IRepository.cs" />
+    <Compile Include="Data\Contracts\IRepositoryProvider.cs" />
+    <Compile Include="Data\Contracts\IUow.cs" />
     <Compile Include="Data\EFRepository.cs" />
+    <Compile Include="Data\RepositoryFactories.cs" />
+    <Compile Include="Data\RepositoryProvider.cs" />
+    <Compile Include="StartUp\OwinStartUp.cs" />
+    <Compile Include="Stream\StreamHelper.cs" />
+    <Compile Include="Web\Global.asax.cs" />
     <Compile Include="Http\HttpClientHelper.cs" />
     <Compile Include="Http\InternalHttpClientHelper.cs" />
     <Compile Include="Http\OAuth2HttpClientHelper.cs" />
+    <Compile Include="OAuth\JwtOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartUp\UnityConfig.cs" />
+    <Compile Include="StartUp\WebApiStartUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />

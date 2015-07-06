@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 
-namespace Common.Contracts
+
+namespace Common.Data.Contracts
 {
     public interface IRepository<T> where T : class
     {
@@ -11,5 +12,4 @@ namespace Common.Contracts
         void Delete(T entity);
         void Delete(int id);
     }
-
 }

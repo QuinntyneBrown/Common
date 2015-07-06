@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using Common.Contracts;
+using Common.Data.Contracts;
 
 namespace Common.Data
 {
