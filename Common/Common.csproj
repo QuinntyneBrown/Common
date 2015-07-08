@@ -139,8 +139,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\InternalAuthenticationAttribute.cs" />
+    <Compile Include="Caching\CacheProvider.cs" />
+    <Compile Include="Caching\Contracts\ICache.cs" />
+    <Compile Include="Caching\Contracts\ICacheProvider.cs" />
+    <Compile Include="Caching\MemoryCache.cs" />
     <Compile Include="Config\CommonConfiguration.cs" />
     <Compile Include="Controllers\BaseEntityController.cs" />
+    <Compile Include="Data\BaseDbContext.cs" />
     <Compile Include="Data\BaseUow.cs" />
     <Compile Include="Data\Contracts\IRepository.cs" />
     <Compile Include="Data\Contracts\IRepositoryProvider.cs" />
@@ -148,6 +153,14 @@
     <Compile Include="Data\EFRepository.cs" />
     <Compile Include="Data\RepositoryFactories.cs" />
     <Compile Include="Data\RepositoryProvider.cs" />
+    <Compile Include="Dtos\FileDto.cs" />
+    <Compile Include="Dtos\PagedResultDto.cs" />
+    <Compile Include="Dtos\SearchResultDto.cs" />
+    <Compile Include="Resources\BaseEntityResource.cs" />
+    <Compile Include="Resources\Contracts\IEntityResource.cs" />
+    <Compile Include="Services\Contracts\IFileUploadService.cs" />
+    <Compile Include="Services\FileUploadService.cs" />
+    <Compile Include="Services\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="StartUp\OwinStartUp.cs" />
     <Compile Include="Stream\StreamHelper.cs" />
     <Compile Include="Web\Global.asax.cs" />
@@ -159,9 +172,7 @@
     <Compile Include="StartUp\UnityConfig.cs" />
     <Compile Include="StartUp\WebApiStartUp.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config">
