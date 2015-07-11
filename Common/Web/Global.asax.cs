@@ -8,7 +8,6 @@ namespace Common.Web
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-            UnityConfig.RegisterComponents();
             GlobalConfiguration.Configure(WebApiStartUp.Configure);
         }
     }

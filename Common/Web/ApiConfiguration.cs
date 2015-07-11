@@ -1,23 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Common.OAuth;
-using Microsoft.AspNet.SignalR.Hubs;
-using Microsoft.Owin;
+using Common.StartUp;
 using Microsoft.Owin.Cors;
+using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using Unity.WebApi;
 
-namespace Common.StartUp
+namespace Common.Web
 {
-    public class OwinStartUp
+    public class ApiConfiguration
     {
-        public virtual void Configuration(IAppBuilder app)
+        public static void Install(HttpConfiguration config, IAppBuilder app)
         {
-            HttpConfiguration config = GlobalConfiguration.Configuration;
-            config.DependencyResolver = new UnityDependencyResolver(UnityConfig.GetContainer());
             
             app.UseJwtBearerAuthentication(new JwtOptions());
             app.UseCors(CorsOptions.AllowAll);
@@ -26,9 +27,14 @@ namespace Common.StartUp
             var jSettings = new JsonSerializerSettings();
 
             jSettings.Formatting = Formatting.Indented;
+            
             jSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
             config.Formatters.JsonFormatter.SerializerSettings = jSettings;
+
+            config.SuppressHostPrincipal();
 
             config.MapHttpAttributeRoutes();
 
@@ -37,8 +43,6 @@ namespace Common.StartUp
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
                 );
-
-            app.UseWebApi(config);
         }
     }
 }

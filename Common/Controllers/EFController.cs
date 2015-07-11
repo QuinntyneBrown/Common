@@ -6,7 +6,7 @@ using Common.Dtos;
 
 namespace Common.Controllers
 {
-    public abstract class BaseEntityController<T>: ApiController where T: class
+    public abstract class EFController<T>: BaseApiController where T: class
     {
         [HttpGet]
         [Route("get")]
@@ -55,13 +55,6 @@ namespace Common.Controllers
         {
             var pagedResult = new PagedResultDto<T>(repository.GetAll().ToList(),setSize,offSet);
             return Ok(pagedResult);
-        }
-
-        [HttpGet]
-        [Route("health")]
-        public IHttpActionResult Health()
-        {
-            return Ok();
         }
 
         protected IRepository<T> repository;

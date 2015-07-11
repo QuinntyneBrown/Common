@@ -13,7 +13,16 @@ namespace Common.StartUp
                 container = new UnityContainer();
             }
 
-            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+            //GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+        }
+
+        public static IUnityContainer GetContainer()
+        {
+            var container = new UnityContainer();
+
+            RegisterComponents(container);
+
+            return container;
         }
 
     }
