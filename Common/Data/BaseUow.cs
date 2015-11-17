@@ -6,11 +6,11 @@ namespace Common.Data
 {
     public class BaseUow : IUow
     {
-        protected DbContext dbContext;
+        protected IDbContext dbContext;
 
         protected IRepositoryProvider RepositoryProvider { get; set; }
 
-        public BaseUow(DbContext dbContext = null)
+        public BaseUow(IDbContext dbContext = null)
         {
             this.dbContext = dbContext;
 
@@ -23,7 +23,7 @@ namespace Common.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        public BaseUow(IRepositoryProvider repositoryProvider, DbContext dbContext = null)
+        public BaseUow(IRepositoryProvider repositoryProvider, IDbContext dbContext = null)
         {
             this.dbContext = dbContext;
 
@@ -34,7 +34,7 @@ namespace Common.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        protected void ConfigureDbContext(DbContext dbContext)
+        protected void ConfigureDbContext(IDbContext dbContext)
         {
             dbContext.Configuration.ProxyCreationEnabled = false;
             dbContext.Configuration.LazyLoadingEnabled = false;

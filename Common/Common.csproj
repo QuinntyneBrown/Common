@@ -155,9 +155,9 @@
     <Compile Include="Config\CommonConfiguration.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\EFController.cs" />
-    <Compile Include="Controllers\GenericRESTController.cs" />
     <Compile Include="Data\BaseDbContext.cs" />
     <Compile Include="Data\BaseUow.cs" />
+    <Compile Include="Data\Contracts\IDbContext.cs" />
     <Compile Include="Data\Contracts\IRepository.cs" />
     <Compile Include="Data\Contracts\IRepositoryProvider.cs" />
     <Compile Include="Data\Contracts\IUow.cs" />
@@ -166,13 +166,15 @@
     <Compile Include="Data\RepositoryProvider.cs" />
     <Compile Include="Dtos\FileDto.cs" />
     <Compile Include="Dtos\PagedResultDto.cs" />
+    <Compile Include="Dtos\ResponseDto.cs" />
+    <Compile Include="Dtos\ResultsDto.cs" />
     <Compile Include="Dtos\SearchResultDto.cs" />
     <Compile Include="Infrastructure\LinkFactory.cs" />
+    <Compile Include="Infrastructure\UriExtensions.cs" />
     <Compile Include="Models\Link.cs" />
     <Compile Include="Resources\BaseEntityResource.cs" />
     <Compile Include="Resources\Contracts\IEntityResource.cs" />
     <Compile Include="Services\Contracts\IFileUploadService.cs" />
-    <Compile Include="Services\Contracts\IGenericRESTService.cs" />
     <Compile Include="Services\FileUploadService.cs" />
     <Compile Include="Services\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="StartUp\OwinStartUp.cs" />

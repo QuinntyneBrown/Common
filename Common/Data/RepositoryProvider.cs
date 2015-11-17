@@ -13,7 +13,7 @@ namespace Common.Data
             Repositories = new Dictionary<Type, object>();
         }
 
-        public DbContext dbContext { get; set; }
+        public IDbContext dbContext { get; set; }
 
         public IRepository<T> GetRepositoryForEntityType<T>() where T : class
         {
@@ -21,7 +21,7 @@ namespace Common.Data
                 _repositoryFactories.GetRepositoryFactoryForEntityType<T>());
         }
 
-        public virtual T GetRepository<T>(Func<DbContext, object> factory = null) where T : class
+        public virtual T GetRepository<T>(Func<IDbContext, object> factory = null) where T : class
         {
             object repoObj;
             Repositories.TryGetValue(typeof(T), out repoObj);
@@ -35,7 +35,7 @@ namespace Common.Data
 
         protected Dictionary<Type, object> Repositories { get; private set; }
 
-        protected virtual T MakeRepository<T>(Func<DbContext, object> factory, DbContext dbContext)
+        protected virtual T MakeRepository<T>(Func<IDbContext, object> factory, IDbContext dbContext)
         {
             var f = factory ?? _repositoryFactories.GetRepositoryFactory<T>();
             if (f == null)

@@ -7,6 +7,7 @@ using System.Web.Http;
 using Common.OAuth;
 using Common.StartUp;
 using Microsoft.Owin.Cors;
+using Microsoft.Owin.Security.OAuth;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -19,7 +20,10 @@ namespace Common.Web
     {
         public static void Install(HttpConfiguration config, IAppBuilder app)
         {
+            config.SuppressHostPrincipal();
             
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
             app.UseJwtBearerAuthentication(new JwtOptions());
             app.UseCors(CorsOptions.AllowAll);
             app.MapSignalR();
@@ -34,13 +38,13 @@ namespace Common.Web
             
             config.Formatters.JsonFormatter.SerializerSettings = jSettings;
 
-            config.SuppressHostPrincipal();
+            
 
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
                 );
         }
